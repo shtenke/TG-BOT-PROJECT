@@ -30,12 +30,13 @@ class CareerAdvisorBot:
                 VALUES (?, ?, ?, ?)''', (user_id, name, age, interests))
             conn.commit()
 
-    def get_user(self, user_id):
+    def get_user(self, name):
         """Получает информацию о пользователе"""
         with sqlite3.connect(self.db_name) as conn:
             cursor = conn.cursor()
-            cursor.execute("SELECT * FROM users WHERE user_id = ?", (user_id,))
+            cursor.execute("SELECT * FROM users WHERE name = ?", (name,))
             return cursor.fetchone()
         
 if __name__ == "__main__":
- bot = CareerAdvisorBot()
+    bot = CareerAdvisorBot()
+    bot.get_user('kostya')
