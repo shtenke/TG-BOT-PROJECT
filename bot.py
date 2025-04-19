@@ -51,12 +51,9 @@ def adduser(message):
 
 @bot.message_handler(commands=['prof'])
 def profession(message):
-    markup = types.InlineKeyboardMarkup()
-    btn1 = types.InlineKeyboardButton("/prof",callback_data='btn1')
-    markup.add(btn1)
     user = TG.get_user(message.chat.id)
     text = TG.get_career_advice(user[4])
-    bot.send_message(message.chat.id,text,reply_markup=markup())
+    bot.send_message(message.chat.id,text,reply_markup=main_menu())
 
 
 @bot.message_handler(commands=['desc'])
